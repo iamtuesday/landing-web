@@ -1,0 +1,30 @@
+.features-item {
+	@apply bg-yellow-100 rounded-[.5rem] p-[4rem];
+
+	&:nth-child(2) {
+		@apply bg-green-100;
+
+		@media screen(md) {
+			margin-top: calc(var(--scale) * 4rem);
+		}
+	}
+
+	&__content {
+		@apply flex flex-col gap-6;
+	}
+
+	&__icon {
+		@apply bg-white w-[11rem] h-[11rem]  p-8 rounded-full flex justify-center items-center;
+	}
+
+	&__text {
+	}
+
+	&__title {
+		@apply text-[2rem] font-bold font-unbounded text-black;
+	}
+
+	&__description {
+		@apply text-[1.6rem] font-unbounded text-[#444];
+	}
+}

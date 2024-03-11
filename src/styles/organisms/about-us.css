@@ -1,0 +1,51 @@
+.about-us {
+	@apply container mx-auto py-[10rem];
+	@media screen(md) {
+		padding-top: calc(var(--scale) * 10rem);
+		padding-bottom: calc(var(--scale) * 10rem);
+	}
+
+	&__content {
+		@apply mt-5 flex flex-col gap-12;
+
+		@media screen(md) {
+			@apply grid grid-cols-2 gap-x-24;
+		}
+	}
+
+	&__text {
+		@apply mt-[8rem];
+
+		@media screen(md) {
+			margin-top: calc(var(--scale) * 8rem);
+		}
+
+		&--description {
+			@apply text-[1.4rem] font-unbounded text-[#444] leading-normal;
+
+			@media screen(md) {
+				@apply text-[1.6rem];
+			}
+		}
+
+		&--list {
+			@apply mt-6 flex flex-col gap-4;
+
+			@media screen(md) {
+				@apply mt-12;
+			}
+
+			&-item {
+				@apply text-[1.4rem] font-unbounded text-[#444] flex gap-4 items-center;
+
+				svg {
+					@apply w-12 h-12 bg-primary rounded-full p-2 text-white;
+				}
+
+				@media screen(md) {
+					@apply text-[1.6rem];
+				}
+			}
+		}
+	}
+}

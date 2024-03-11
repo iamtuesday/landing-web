@@ -1,0 +1,73 @@
+.banner-prin {
+	@apply relative overflow-hidden w-full;
+	height: 130rem;
+
+	@media screen(md) {
+		height: 100vh;
+	}
+
+	&::before {
+		content: '';
+		position: absolute;
+		width: 169%;
+		height: 123%;
+		left: -32%;
+		top: -27%;
+		clip-path: ellipse(50% 50% at 50% 50%);
+		background: linear-gradient(89.98deg, #f73859 0.39%, #6e5cff 99.99%);
+	}
+
+	&__container {
+		@apply flex flex-col gap-4 container absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2;
+
+		@media screen(md) {
+			@apply grid grid-cols-2 gap-x-12;
+		}
+	}
+
+	&__content {
+	}
+
+	&__title {
+		@apply font-bold text-white leading-[75px] text-[45px] font-heading;
+
+		span {
+			@apply text-[#FFF12E];
+		}
+
+		@media screen(md) {
+			@apply text-[60px] leading-[75px];
+		}
+	}
+
+	&__description {
+		@apply text-[#FFFFFF] text-[20px] leading-[30px] font-normal font-unbounded mt-4;
+
+		@media scre;
+	}
+
+	&__form {
+		@apply mb-[4rem] bg-white p-[5rem] rounded-[.5rem] relative flex flex-col gap-4;
+		-webkit-box-shadow: -1px 0px 44px 15px rgb(0 0 0 / 7%);
+
+		&-content {
+			@apply flex flex-col gap-4;
+		}
+
+		&-title {
+			@apply font-bold text-[#1A1A1A] text-[30px] leading-[45px] font-unbounded;
+
+			@media screen(md) {
+				@apply text-[36px] leading-[46px];
+			}
+		}
+
+		&-description {
+			@apply text-[#858585] text-[16px] leading-[30px] font-normal font-unbounded;
+
+			span {
+				@apply font-bold;
+			}
+		}
+	}
+}

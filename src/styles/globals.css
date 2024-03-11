@@ -1,6 +1,14 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+@import 'scale.css';
+@import './organisms';
+@import './molecules';
+
+html {
+	scroll-behavior: smooth;
+	font-size: 62.5%;
+}
 
 @layer base {
 	:root {

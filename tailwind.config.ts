@@ -12,7 +12,7 @@ module.exports = {
 		},
 		extend: {
 			fontFamily: {
-				sans: ['var(--open-sans)'],
+				unbounded: ['var(--font-unbounded)'],
 				home: ['var(--font-home)'],
 				heading: ['var(--font-heading)'],
 				inter: ['var(--inter)']

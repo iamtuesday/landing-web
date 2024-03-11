@@ -1,0 +1,13 @@
+.features {
+	@apply container pb-[10rem];
+	@media screen(md) {
+		padding-bottom: calc(var(--scale) * 10rem);
+	}
+
+	&__list {
+		@apply grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 mt-8;
+		@media screen(md) {
+			margin-top: calc(3.5rem * var(--scale));
+		}
+	}
+}

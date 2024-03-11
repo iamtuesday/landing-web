@@ -3,13 +3,13 @@ import { siteConfig } from '@/config/site'
 import { cn } from '@/lib/utils'
 import '@/styles/globals.css'
 import type { Metadata } from 'next'
-import { Inter, Open_Sans as OpenSans } from 'next/font/google'
+import { Inter } from 'next/font/google'
 import localFont from 'next/font/local'
 import { Toaster } from 'sonner'
 
-const openSans = OpenSans({
-	subsets: ['latin'],
-	variable: '--open-sans'
+const unbounded = localFont({
+	src: '../assets/fonts/Unbounded-Regular.woff2',
+	variable: '--font-unbounded'
 })
 
 const inter = Inter({
@@ -18,7 +18,7 @@ const inter = Inter({
 })
 
 const fontHeading = localFont({
-	src: '../assets/fonts/CalSans-SemiBold.woff2',
+	src: '../assets/fonts/Unbounded-Bold.woff2',
 	variable: '--font-heading'
 })
 
@@ -71,16 +71,14 @@ export default function RootLayout({
 			<body
 				className={cn(
 					'min-h-screen bg-background font-sans antialiased',
-					openSans.variable,
+					unbounded.variable,
 					fontHeading.variable,
 					inter.variable,
 					fontHome.variable
 				)}
 			>
-				
-					{children}
-					<Analytics />
-			
+				{children}
+				<Analytics />
 
 				<Toaster />
 			</body>

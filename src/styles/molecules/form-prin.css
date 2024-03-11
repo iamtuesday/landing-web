@@ -1,0 +1,7 @@
+.form-prin {
+	@apply relative isolate flex flex-col gap-4;
+
+	&__img {
+		@apply h-[9rem] w-[9rem] rounded-full bg-[#fff12e] grid place-content-center absolute -top-4 left-1/4 -translate-x-1/2 -translate-y-1/2;
+	}
+}
