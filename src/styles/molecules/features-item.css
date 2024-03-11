@@ -1,5 +1,11 @@
 .features-item {
-	@apply bg-yellow-100 rounded-[.5rem] p-[4rem];
+	@apply bg-yellow-100 rounded-[.5rem] p-[4rem] h-[40rem] min-h-[40rem];
+
+	@media screen(md) {
+		padding: calc(var(--scale) * 4rem);
+		height: calc(var(--scale) * 40rem);
+		min-height: calc(var(--scale) * 40rem);
+	}
 
 	&:nth-child(2) {
 		@apply bg-green-100;

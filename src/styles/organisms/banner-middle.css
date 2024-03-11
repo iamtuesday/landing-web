@@ -1,0 +1,62 @@
+.banner-middle {
+	@apply relative overflow-hidden w-full;
+	height: 90rem;
+
+	@media screen(md) {
+		height: calc(var(--scale) * 70rem);
+	}
+
+	&::before {
+		@apply absolute top-0 left-0 right-0 bottom-0;
+		content: '';
+		background: url('https://tuesdays3.sfo3.digitaloceanspaces.com/newsletter.jpg') no-repeat;
+	}
+
+	&__container {
+		@apply absolute flex flex-col md:grid md:grid-cols-2 md:gap-x-24 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2;
+	}
+
+	&__image {
+		@apply relative;
+		&::after {
+			@apply absolute z-0;
+			content: '';
+			width: 548px;
+			height: 548px;
+			background-color: #d8d8d8;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+			border-radius: 50%;
+			z-index: -1;
+		}
+	}
+
+	&__content {
+		@apply flex flex-col justify-center;
+	}
+
+	&__title {
+		@apply text-white text-[5rem] font-unbounded;
+
+		@media screen(md) {
+			font-size: calc(var(--scale) * 5rem);
+		}
+	}
+
+	&__text {
+		@apply text-white text-[2.4rem] font-unbounded;
+
+		span {
+			@apply bg-[#fff12e] text-black px-2 font-medium;
+		}
+	}
+
+	&__description {
+		@apply text-white text-[1.8rem] font-unbounded mt-12;
+	}
+
+	&__btn {
+		@apply mt-12;
+	}
+}

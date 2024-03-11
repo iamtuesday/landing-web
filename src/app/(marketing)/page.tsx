@@ -1,4 +1,4 @@
-import { AboutUs, BannerPrin, Features } from '@/components/organisms'
+import { AboutUs, BannerMiddle, BannerPrin, Features, Reviews } from '@/components/organisms'
 import { cn } from '@/lib/utils'
 
 const aboutData = {
@@ -42,6 +42,16 @@ const HomePage = async () => {
 			<AboutUs titles={aboutData.titles} />
 
 			<Features titles={featuresData.titles} list={featuresData.list} />
+
+			<BannerMiddle
+				titles={{
+					title: 'Newsletter!',
+					subtitle: 'Subscribe and get The special Offer 40% Discount'
+				}}
+				description="Let your users know a little more about your product or service."
+			/>
+
+			<Reviews titles={{ title: 'What clients say', subtitle: '1m satisfied customers' }} />
 		</main>
 	)
 }
