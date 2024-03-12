@@ -18,7 +18,7 @@ export const Reviews: FC<ReviewsProps> = ({ titles }) => {
 				list={[
 					{
 						content:
-							'Enim ad minim veniam, quis nostrud exercitat ullrem ipsum dolor sit amet, consece adipising elit, o eiusmod tempor incididunt ut labore bit of how ther chancer flat bogeo viele marioa.',
+							'Enimaaaaaa ad minim veniam, quis nostrud exercitat ullrem ipsum dolor sit amet, consece adipising elit, o eiusmod tempor incididunt ut labore bit of how ther chancer flat bogeo viele marioa.',
 						author: {
 							name: 'John Doe',
 							position: 'CEO',
@@ -27,9 +27,18 @@ export const Reviews: FC<ReviewsProps> = ({ titles }) => {
 					},
 					{
 						content:
-							'Enim ad minim veniam, quis nostrud exercitat ullrem ipsum dolor sit amet, consece adipising elit, o eiusmod tempor incididunt ut labore bit of how ther chancer flat bogeo viele marioa.',
+							'Enimfsda ad minim veniam, quis nostrud exercitat ullrem ipsum dolor sit amet, consece adipising elit, o eiusmod tempor incididunt ut labore bit of how ther chancer flat bogeo viele marioa.',
 						author: {
-							name: 'John Doe',
+							name: 'John Doeeee',
+							position: 'CEO',
+							avatar: 'https://tuesdays3.sfo3.digitaloceanspaces.com/customize.png'
+						}
+					},
+					{
+						content:
+							'Enimaaaaaa ad minim veniam, quis nostrud exercitat ullrem ipsum dolor sit amet, consece adipising elit, o eiusmod tempor incididunt ut labore bit of how ther chancer flat bogeo viele marioa.',
+						author: {
+							name: 'John Dowwe',
 							position: 'CEO',
 							avatar: 'https://tuesdays3.sfo3.digitaloceanspaces.com/customize.png'
 						}

@@ -1,5 +1,5 @@
 .reviews {
-	@apply container py-[5rem];
+	@apply container relative py-[5rem];
 
 	@media screen(md) {
 		padding-top: calc(var(--scale) * 10rem);

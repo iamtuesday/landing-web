@@ -1,2 +1,61 @@
 .review-slider {
+	@apply mt-10;
+
+	@media screen(laptop) {
+		margin-top: calc(var(--scale) * 5rem);
+	}
+
+	&__button {
+		@apply w-24 h-24 bg-primary rounded-full flex items-center justify-center cursor-pointer text-white;
+
+		&--prev {
+			@apply absolute -left-24 top-1/2 -translate-y-1/2 z-10;
+		}
+
+		&--next {
+			@apply absolute -right-24 top-1/2 -translate-y-1/2;
+		}
+	}
+
+	&__content {
+		@apply relative h-[40rem];
+
+		&::before {
+			@apply absolute isolate top-0 left-0 right-0 bottom-0;
+			content: '';
+			clip-path: polygon(0 10%, 100% 0, 90% 100%, 0% 100%);
+			background: #f5f9fa;
+		}
+
+		/* &::nth-child(2) { */
+		/* 	&::before { */
+		/* 		clip-path: polygon(0% 0%, 100% 10%, 100% 100%, 10% 100%) */
+		/* 	} */
+		/* } */
+
+		&--text {
+			@apply text-[1.4rem] font-unbounded text-[#444] leading-normal absolute left-24 top-36 pr-24;
+			@media screen(md) {
+				@apply text-[1.6rem];
+			}
+		}
+
+		&--author-name {
+			@apply text-[2rem] font-unbounded font-bold text-[#444] leading-normal absolute left-56 bottom-32;
+			@media screen(md) {
+				@apply text-[2.2rem];
+			}
+		}
+
+		&--author-position {
+			@apply text-[1.4rem] font-unbounded text-[#444] leading-normal absolute left-56 bottom-24;
+			@media screen(md) {
+				@apply text-[1.6rem];
+			}
+		}
+
+		&--author-image {
+			@apply w-24 h-24 rounded-full p-2  bg-[#12a575] absolute bottom-24 left-24;
+		}
+	}
 }

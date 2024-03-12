@@ -1,4 +1,6 @@
 import { Analytics } from '@/components/global/analytics'
+import { Footer } from '@/components/global/footer'
+import { Header } from '@/components/global/header'
 import { siteConfig } from '@/config/site'
 import { cn } from '@/lib/utils'
 import '@/styles/globals.css'
@@ -77,10 +79,12 @@ export default function RootLayout({
 					fontHome.variable
 				)}
 			>
+				<Header />
 				{children}
 				<Analytics />
 
 				<Toaster />
+				<Footer />
 			</body>
 		</html>
 	)

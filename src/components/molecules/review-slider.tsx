@@ -1,11 +1,12 @@
 'use client'
 
 import { cn } from '@/lib/utils'
+import Image from 'next/image'
 import { useEffect, useRef } from 'react'
 import { register } from 'swiper/element/bundle'
 import 'swiper/element/css/autoplay'
 import 'swiper/element/css/effect-fade'
-import { Icons, Mdx } from '../ui'
+import { Icons } from '../ui'
 
 interface ReviewListProps {
 	list: {
@@ -28,23 +29,21 @@ export const ReviewSlider: React.FC<ReviewListProps> = ({ list }) => {
 		// Object with parameters
 		const params = {
 			slidesPerView: 2,
+			spaceBetween: 20,
 			breakpoints: {
 				375: {
 					slidesPerView: 1
 				},
 				1024: {
-					slidesPerView: 2
+					slidesPerView: 2,
+					spaceBetween: 20
 				}
 			},
 			injectStyles: [
 				`
         .swiper-wrapper {
-            position: relative;
-            padding: 2.5rem 0;
-
-            @media (min-width: 1024px) {
-                padding: calc(3.5rem_*_var(--scale)) 0;
-            }
+					position: relative;
+					gap: 1.5rem;
         }
         .swiper-pagination {
             position: absolute;
@@ -81,8 +80,6 @@ export const ReviewSlider: React.FC<ReviewListProps> = ({ list }) => {
 	}, [])
 
 	const btnPrev = () => {
-		console.log('swiperRef', swiperRef)
-
 		swiperRef.current.swiper.slidePrev()
 	}
 
@@ -92,11 +89,11 @@ export const ReviewSlider: React.FC<ReviewListProps> = ({ list }) => {
 
 	return (
 		<div className={cn('review-slider')}>
-			<div className="review-slider__buttons z-[10]s">
-				<button className="review-slider__button" onClick={btnPrev}>
+			<div className="review-slider__buttons">
+				<button className="review-slider__button review-slider__button--prev" onClick={btnPrev}>
 					{<Icons.chevronLeft />}
 				</button>
-				<button className="review-slider__button" onClick={btnNext}>
+				<button className="review-slider__button review-slider__button--next" onClick={btnNext}>
 					{<Icons.chevronRight />}
 				</button>
 			</div>
@@ -104,7 +101,7 @@ export const ReviewSlider: React.FC<ReviewListProps> = ({ list }) => {
 			<swiper-container
 				init="false"
 				ref={swiperRef}
-				speed="900"
+				speed="1200"
 				loop="true"
 				navigation="false"
 				pagination="false"
@@ -115,7 +112,22 @@ export const ReviewSlider: React.FC<ReviewListProps> = ({ list }) => {
 					return (
 						<swiper-slide key={index}>
 							<div className={cn('review-slider__content')}>
-								<Mdx className="review-slider__content--mdx">{review.content}</Mdx>
+								<p className="review-slider__content--text">{review.content}</p>
+								<div className="review-slider__content--author">
+									<figure className="review-slider__content--author-image">
+										<Image
+											src="https://tuesdays3.sfo3.digitaloceanspaces.com/quote.png"
+											alt={review.author.name}
+											width={100}
+											height={100}
+										/>
+									</figure>
+
+									<div className="review-slider__content--author-info">
+										<p className="review-slider__content--author-name">{review.author.name}</p>
+										<p className="review-slider__content--author-position">{review.author.position}</p>
+									</div>
+								</div>
 							</div>
 						</swiper-slide>
 					)

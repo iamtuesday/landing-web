@@ -23,13 +23,13 @@ const featuresData = {
 		{
 			title: 'Get your website up and running in no time',
 			description:
-				'Enim ad minim veniam, quis nostrud exercitatullamco laboris nisi ut aliquip ex ea commodo consequat.',
+				'Enimaaaaaaaa ad minim veniam, quis nostrud exercitatullamco laboris nisi ut aliquip ex ea commodo consequat.',
 			icon: 'https://tuesdays3.sfo3.digitaloceanspaces.com/server-1.png'
 		},
 		{
 			title: 'Get your website up and running in no time',
 			description:
-				'Enim ad minim veniam, quis nostrud exercitatullamco laboris nisi ut aliquip ex ea commodo consequat.',
+				'Enimmmmm ad minim veniam, quis nostrud exercitatullamco laboris nisi ut aliquip ex ea commodo consequat.',
 			icon: 'https://tuesdays3.sfo3.digitaloceanspaces.com/server-1.png'
 		}
 	]

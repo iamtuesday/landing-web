@@ -4,6 +4,7 @@
 @import 'scale.css';
 @import './organisms';
 @import './molecules';
+@import './global';
 
 html {
 	scroll-behavior: smooth;
