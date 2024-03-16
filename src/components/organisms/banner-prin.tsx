@@ -18,7 +18,7 @@ export const BannerPrin = () => {
 					<div className="banner-prin__form-content">
 						<h2 className="banner-prin__form-title">Call For An Instant Quote</h2>
 						<p className="banner-prin__form-description">
-							Fill out the form below or call <span>203-428-7019</span> to get immediate over the phone help.
+							Fill out the form below or call <span>262 235 5444</span> to get immediate over the phone help.
 						</p>
 					</div>
 					<FormPrin />

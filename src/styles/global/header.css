@@ -1,9 +1,42 @@
 .header {
-	@apply fixed top-0 left-0 w-full z-50 bg-white shadow-md;
+	@apply sticky top-0 left-0 w-full z-50 py-[2.5rem] px-[1.5rem] bg-white;
 	box-shadow: 0 2px 10px 0 rgb(0 0 0 / 10%);
-	background: linear-gradient(89.98deg, #f73859 0.39%, #6e5cff 99.99%);
+	/* background: linear-gradient(89.98deg, #f73859 0.39%, #6e5cff 99.99%); */
 
 	@media screen(md) {
 		padding: calc(2rem * var(--scale)) calc(25rem * var(--scale));
+	}
+
+	&__logo {
+		@apply w-full max-w-[16rem] h-full max-h-[15rem];
+
+		@media screen(md) {
+			max-width: calc(30rem * var(--scale));
+			max-height: calc(30rem * var(--scale));
+		}
+	}
+
+	&__container {
+		@apply flex justify-between items-center;
+	}
+
+	&__content {
+		@apply flex  flex-col justify-between items-center gap-2;
+
+		&--title {
+			@apply text-[1.6rem] font-unbounded font-bold text-black hidden md:block;
+		}
+
+		&--icon {
+			@apply flex items-center;
+		}
+
+		&--icon-text {
+			@apply text-[1.2rem] font-unbounded font-bold text-[#444];
+
+			@media screen(md) {
+				font-size: calc(var(--scale) * 1.6rem);
+			}
+		}
 	}
 }
