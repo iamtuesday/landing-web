@@ -1,5 +1,3 @@
-import { IS_DEVELOPMENT } from '@/config'
-
 export const ServerError = ({ children }: { children?: React.ReactNode | any }) => {
 	return (
 		<div className="flex h-[500px] items-center justify-center p-5 w-full bg-white">
@@ -21,13 +19,6 @@ export const ServerError = ({ children }: { children?: React.ReactNode | any }) 
 				<p className="text-slate-600 mt-5 lg:text-lg">
 					Oops something went wrong. Try to refresh this page or feel free to contact us if the problem presists.
 				</p>
-				{IS_DEVELOPMENT && (
-					<div className="my-10">
-						<div className="p-5 bg-destructive/50 text-destructive border rounded-lg border-destructive">
-							{children}
-						</div>
-					</div>
-				)}
 			</div>
 		</div>
 	)
