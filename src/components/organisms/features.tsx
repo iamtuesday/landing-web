@@ -2,21 +2,26 @@ import { Titles } from '../atoms'
 import { FeaturesItem } from '../molecules'
 
 interface FeaturesProps {
-	titles: {
-		title: string
-		subtitle?: string
-		className?: string
-	}
+	title: string
+	subtitle?: string
+	className?: string
 	list: {
 		title: string
 		description: string
-		icon: string
+		icon: {
+			url: string
+			alt: string
+			name: string
+			width: number
+			height: number
+		}
 	}[]
 }
-export const Features: React.FC<FeaturesProps> = ({ titles, list }) => {
+export const Features: React.FC<FeaturesProps> = ({ title, subtitle, className, list }) => {
+	console.log(list)
 	return (
 		<section className="features">
-			<Titles {...titles} />
+			<Titles {...{ title, subtitle }} position="center" />
 
 			<div className="features__list">
 				{list?.map((item, index) => (

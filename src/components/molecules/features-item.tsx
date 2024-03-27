@@ -3,7 +3,13 @@ import Image from 'next/image'
 interface FeaturesItemProps {
 	title: string
 	description: string
-	icon: string
+	icon: {
+		url: string
+		alt: string
+		name: string
+		width: number
+		height: number
+	}
 }
 
 export const FeaturesItem: React.FC<FeaturesItemProps> = ({ title, description, icon }) => {
@@ -11,7 +17,7 @@ export const FeaturesItem: React.FC<FeaturesItemProps> = ({ title, description, 
 		<div className="features-item">
 			<div className="features-item__content">
 				<figure className="features-item__icon">
-					<Image src={icon} alt={title} width={100} height={100} />
+					<Image src={icon.url} alt={icon.alt ?? icon.name} width={100} height={100} />
 				</figure>
 				<div className="features-item__text">
 					<h3 className="features-item__title">{title}</h3>
