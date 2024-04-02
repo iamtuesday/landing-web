@@ -1,3 +1,4 @@
+export * from './description'
 export * from './error-field'
 export * from './not-found-items'
 export * from './prev-link'

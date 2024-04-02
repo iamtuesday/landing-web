@@ -18,7 +18,6 @@ interface FeaturesProps {
 	}[]
 }
 export const Features: React.FC<FeaturesProps> = ({ title, subtitle, className, list }) => {
-	console.log(list)
 	return (
 		<section className="features">
 			<Titles {...{ title, subtitle }} position="center" />

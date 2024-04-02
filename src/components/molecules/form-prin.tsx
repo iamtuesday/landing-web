@@ -1,6 +1,7 @@
 'use client'
 
 import { Button, Form, FormControl, FormField, FormItem, FormMessage, Input, Textarea } from '@/components/ui'
+import { axiosFetchConfig } from '@/lib/utils/axios-config.utility'
 import { zodResolver } from '@hookform/resolvers/zod'
 import Image from 'next/image'
 import { useState } from 'react'
@@ -11,7 +12,7 @@ import * as z from 'zod'
 const formSchema = z.object({
 	fullname: z.string(),
 	email: z.string().email(),
-	phoneNumber: z.string().min(10).max(10),
+	phone: z.string().min(10).max(10),
 	address: z.string(),
 	issue: z.string().optional()
 })
@@ -24,7 +25,7 @@ export const FormPrin = () => {
 		defaultValues: {
 			email: '',
 			fullname: '',
-			phoneNumber: '',
+			phone: '',
 			address: '',
 			issue: ''
 		}
@@ -36,9 +37,13 @@ export const FormPrin = () => {
 		setIsLoading(true)
 
 		try {
-			/**
-			 * Post data
-			 */
+			const [res, error] = await axiosFetchConfig<any>(`/landing-forms`, 'POST', {
+				data: {
+					...data
+				}
+			})
+
+			console.log(res)
 		} catch (error) {
 		} finally {
 			setIsLoading(false)
@@ -77,7 +82,7 @@ export const FormPrin = () => {
 
 					<FormField
 						control={form.control}
-						name="phoneNumber"
+						name="phone"
 						render={({ field }) => (
 							<FormItem>
 								<FormControl>

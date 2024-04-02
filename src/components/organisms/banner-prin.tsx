@@ -1,3 +1,4 @@
+import { isSet } from '@/lib/utils/common'
 import { FC } from 'react'
 import { FormPrin } from '../molecules'
 
@@ -12,11 +13,19 @@ interface BannerPrinProps {
 
 export const BannerPrin: FC<BannerPrinProps> = ({ banner }) => {
 	const formatTitle = (title: string) => {
-		return title.replace(/\//g, '<span>')
+		if (isSet(title)) {
+			return title.replace(/\//g, '<span>')
+		}
+
+		return ''
 	}
 
 	const formatDescription = (title: string) => {
-		return title.replace(/\/([^\/]+)\//g, '<span>$1</span>')
+		if (isSet(title)) {
+			return title.replace(/\/([^\/]+)\//g, '<span>$1</span>')
+		}
+
+		return ''
 	}
 
 	return (
