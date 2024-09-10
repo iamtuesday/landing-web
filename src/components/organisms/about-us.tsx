@@ -1,49 +1,35 @@
+import { IAboutUs } from '@/app/(marketing)/[slug]/page'
 import Image from 'next/image'
 import { FC } from 'react'
 import { Titles } from '../atoms'
 import { Icons } from '../ui'
 
 interface AboutUsProps {
-	titles: {
-		title: string
-		subtitle?: string
-		className?: string
-	}
+	aboutUs: IAboutUs
 }
-export const AboutUs: FC<AboutUsProps> = ({ titles }) => {
+
+export const AboutUs: FC<AboutUsProps> = ({ aboutUs }) => {
+	const { title, subtitle, description, img, list } = aboutUs
 	return (
 		<div className="about-us">
-			<Titles {...titles} position="center" />
+			<Titles title={title} subtitle={subtitle} position="center" />
 
 			<div className="about-us__content">
 				<figure className="about-us__image">
-					<Image
-						src="https://tuesdays3.sfo3.digitaloceanspaces.com/customize.png"
-						alt="About Us"
-						width={700}
-						height={590}
-					/>
+					<Image src={img.url} alt="About Us" width={img.width} height={img.height} />
 				</figure>
 
 				<div className="about-us__text">
-					<p className="about-us__text--description">
-						Enim ad minim veniam, quis nostrud exercitat ullrem ipsum dolor sit amet, consece adipising elit, o eiusmod
-						tempor incididunt ut labore bit of how ther chancer flat bogeo viele marioa.
-					</p>
+					<p className="about-us__text--description">{description}</p>
 
 					<ul className="about-us__text--list">
-						<li className="about-us__text--list-item">
-							<Icons.check />
-							Get high conversions rates
-						</li>
-						<li className="about-us__text--list-item">
-							<Icons.check />
-							Get your website up and running in no time
-						</li>
-						<li className="about-us__text--list-item">
-							<Icons.check />
-							Virtual Private Marketing
-						</li>
+						{Array.isArray(list) &&
+							list.map(item => (
+								<li key={item.id} className="about-us__text--list-item">
+									<Icons.check />
+									{item.item}
+								</li>
+							))}
 					</ul>
 				</div>
 			</div>

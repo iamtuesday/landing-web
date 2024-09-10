@@ -31,6 +31,12 @@ export const FormPrin = () => {
 		}
 	})
 
+	const {
+		handleSubmit,
+		formState: { errors },
+		reset
+	} = form
+
 	const isComplete = Object.values(form.getValues()).every(value => value !== '')
 
 	async function onSubmit(data: z.infer<typeof formSchema>) {
@@ -43,7 +49,13 @@ export const FormPrin = () => {
 				}
 			})
 
-			console.log(res)
+			if (!!res) {
+				reset()
+			}
+
+			if (!!error) {
+				throw new Error(error!.message)
+			}
 		} catch (error) {
 		} finally {
 			setIsLoading(false)
@@ -53,7 +65,7 @@ export const FormPrin = () => {
 	return (
 		<>
 			<Form {...form}>
-				<form onSubmit={form.handleSubmit(onSubmit)} className="form-prin">
+				<form onSubmit={handleSubmit(onSubmit)} className="form-prin">
 					<FormField
 						control={form.control}
 						name="fullname"

@@ -1,31 +1,85 @@
 import { AboutUs, BannerMiddle, BannerPrin, Features, Reviews } from '@/components/organisms'
 import { simpleFetch } from '@/lib/utils/simple-fetch'
 
+export type ILandingContract = {
+	banner: IBanner
+	aboutUs: IAboutUs
+	bannerMiddle: IBannerMiddle
+	review: IReviews
+}
+
+export type IBannerMiddle = {
+	title: string
+	subtitle: string
+	description: string
+	bg?: IImg
+	img: IImg
+}
+
+export type IAboutUs = {
+	title: string
+	subtitle: string
+	description: string
+	img: IImg
+	list: IAboutUsList[]
+}
+
+export type IAboutUsList = {
+	id: string
+	item: string
+}
+
+export type IImg = {
+	url: string
+	alt: string
+	name: string
+	width: number
+	height: number
+}
+
+export type IBanner = {
+	title: string
+	subtitle: string
+	formTitle: string
+	formDescription: string
+}
+
+export type IReviews = {
+	title: string
+	subtitle: string
+	list: IReview[]
+}
+
+export type IReview = {
+	name: string
+	job: string
+	description: string
+}
+
 interface SlugPageProps {
 	params: {
 		slug: string
 	}
 }
-export default async function SlugPage({ params }: SlugPageProps) {
-	const [data, error] = await simpleFetch<any>(`/landings?populate=deep&filters[slug]=${params.slug}`)
 
-	/**
-	 * Added mappers
-	 */
+export default async function SlugPage({ params }: SlugPageProps) {
+	const [data, error] = await simpleFetch<IGenericRecord>(`/landings?populate=deep&filters[slug]=${params.slug}`)
+
+	const _data = data?.data[0]?.attributes
 
 	const newData = {
-		title: data?.data[0]?.attributes?.title,
-		slug: data?.data[0]?.attributes?.slug,
+		title: _data?.title,
+		slug: _data?.slug,
 		banner: {
-			title: data?.data[0]?.attributes?.banner?.title,
-			subtitle: data?.data[0]?.attributes?.banner?.subtitle,
-			formTitle: data?.data[0]?.attributes?.banner?.formTitle,
-			formDescription: data?.data[0]?.attributes?.banner?.formDescription
+			title: _data?.banner?.title,
+			subtitle: _data?.banner?.subtitle,
+			formTitle: _data?.banner?.formTitle,
+			formDescription: _data?.banner?.formDescription
 		},
 		services: {
-			title: data?.data[0]?.attributes?.services?.title,
-			subtitle: data?.data[0]?.attributes?.services?.subtitle,
-			list: data?.data[0]?.attributes?.services?.list.map((item: any) => ({
+			title: _data?.services?.title,
+			subtitle: _data?.services?.subtitle,
+			list: _data?.services?.list.map((item: IGenericRecord) => ({
 				title: item.title,
 				description: item.description,
 				icon: {
@@ -38,40 +92,46 @@ export default async function SlugPage({ params }: SlugPageProps) {
 			}))
 		},
 		aboutUs: {
-			title: data?.data[0]?.attributes?.aboutUs?.title,
-			subtitle: data?.data[0]?.attributes?.aboutUs?.subtitle,
-			description: data?.data[0]?.attributes?.aboutUs?.description,
+			title: _data?.aboutUs?.title,
+			subtitle: _data?.aboutUs?.subtitle,
+			description: _data?.aboutUs?.description,
 			img: {
-				url: data?.data[0]?.attributes?.aboutUs?.img?.data?.attributes?.url,
-				alt: data?.data[0]?.attributes?.aboutUs?.img?.data?.attributes?.alternativeText,
-				name: data?.data[0]?.attributes?.aboutUs?.img?.data?.attributes?.name,
-				width: data?.data[0]?.attributes?.aboutUs?.img?.data?.attributes?.width,
-				height: data?.data[0]?.attributes?.aboutUs?.img?.data?.attributes?.height
-			}
+				url: _data?.aboutUs?.img?.data?.attributes?.url,
+				alt: _data?.aboutUs?.img?.data?.attributes?.alternativeText,
+				name: _data?.aboutUs?.img?.data?.attributes?.name,
+				width: _data?.aboutUs?.img?.data?.attributes?.width,
+				height: _data?.aboutUs?.img?.data?.attributes?.height
+			},
+			list: _data?.aboutUs?.list.map((item: IGenericRecord) => ({
+				id: item.id,
+				item: item.item
+			}))
 		},
 		bannerMiddle: {
-			title: data?.data[0]?.attributes?.bannerMiddle?.title,
-			subtitle: data?.data[0]?.attributes?.bannerMiddle?.subtitle,
-			description: data?.data[0]?.attributes?.bannerMiddle?.description,
-			bg: {
-				url: data?.data[0]?.attributes?.bannerMiddle?.bg?.data?.attributes?.url,
-				alt: data?.data[0]?.attributes?.bannerMiddle?.bg?.data?.attributes?.alternativeText,
-				name: data?.data[0]?.attributes?.bannerMiddle?.bg?.data?.attributes?.name,
-				width: data?.data[0]?.attributes?.bannerMiddle?.bg?.data?.attributes?.width,
-				height: data?.data[0]?.attributes?.bannerMiddle?.bg?.data?.attributes?.height
-			},
+			title: _data?.bannerMiddle?.title,
+			subtitle: _data?.bannerMiddle?.subtitle,
+			description: _data?.bannerMiddle?.description,
+			bg: !!_data?.bannerMiddle?.bg?.data
+				? {
+						url: _data?.bannerMiddle?.bg?.data?.attributes?.url,
+						alt: _data?.bannerMiddle?.bg?.data?.attributes?.alternativeText,
+						name: _data?.bannerMiddle?.bg?.data?.attributes?.name,
+						width: _data?.bannerMiddle?.bg?.data?.attributes?.width,
+						height: _data?.bannerMiddle?.bg?.data?.attributes?.height
+				  }
+				: undefined,
 			img: {
-				url: data?.data[0]?.attributes?.bannerMiddle?.img?.data?.attributes?.url,
-				alt: data?.data[0]?.attributes?.bannerMiddle?.img?.data?.attributes?.alternativeText,
-				name: data?.data[0]?.attributes?.bannerMiddle?.img?.data?.attributes?.name,
-				width: data?.data[0]?.attributes?.bannerMiddle?.img?.data?.attributes?.width,
-				height: data?.data[0]?.attributes?.bannerMiddle?.img?.data?.attributes?.height
+				url: _data?.bannerMiddle?.img?.data?.attributes?.url,
+				alt: _data?.bannerMiddle?.img?.data?.attributes?.alternativeText,
+				name: _data?.bannerMiddle?.img?.data?.attributes?.name,
+				width: _data?.bannerMiddle?.img?.data?.attributes?.width,
+				height: _data?.bannerMiddle?.img?.data?.attributes?.height
 			}
 		},
-		reviews: {
-			title: data?.data[0]?.attributes?.reviews?.title,
-			subtitle: data?.data[0]?.attributes?.reviews?.subtitle,
-			list: data?.data[0]?.attributes?.reviews?.list.map((item: any) => ({
+		review: {
+			title: _data?.reviews?.title,
+			subtitle: _data?.reviews?.subtitle,
+			list: _data?.reviews?.list.map((item: IGenericRecord) => ({
 				name: item.name,
 				job: item.job,
 				description: item.description
@@ -80,23 +140,23 @@ export default async function SlugPage({ params }: SlugPageProps) {
 		seo: {}
 	}
 
-	if (error) {
+	if (!!error) {
 		return <div>Error: {error.message}</div>
 	}
 
-	const { banner, reviews, services, aboutUs } = newData
+	const { banner, review, services, aboutUs, bannerMiddle } = newData
 
 	return (
 		<main>
 			<BannerPrin banner={banner} />
 
-			<AboutUs titles={aboutUs} />
+			<AboutUs aboutUs={aboutUs} />
 
 			<Features title={services.title} subtitle={services.subtitle} list={services.list} />
 
-			<BannerMiddle titles={newData.bannerMiddle} description={newData.bannerMiddle.description} />
+			<BannerMiddle bannerMiddle={bannerMiddle} />
 
-			<Reviews titles={reviews} />
+			<Reviews review={review} />
 		</main>
 	)
 }

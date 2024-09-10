@@ -1,7 +1,5 @@
 /** @type {import('next').NextConfig} */
 
-// const { withContentlayer } = require("next-contentlayer");
-
 const nextConfig = {
 	images: {
 		remotePatterns: [
@@ -12,8 +10,16 @@ const nextConfig = {
 				pathname: '/*'
 			}
 		]
+	},
+	redirects: async () => {
+		return [
+			{
+				source: '/',
+				destination: '/electrical-panel-upgrades',
+				permanent: true
+			}
+		]
 	}
 }
 
 export default nextConfig
-// module.exports = withContentlayer(nextConfig);

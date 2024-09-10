@@ -7,9 +7,14 @@
 	}
 
 	&::before {
-		@apply absolute top-0 left-0 right-0 bottom-0;
+		@apply absolute;
 		content: '';
-		background: url('https://tuesdays3.sfo3.digitaloceanspaces.com/newsletter.jpg') no-repeat;
+		width: 169%;
+		height: 123%;
+		left: -32%;
+		top: -27%;
+		clip-path: ellipse(50% 50% at 50% 50%);
+		background: linear-gradient(89.98deg, #f73859 0.39%, #dd3333 99.99%);
 	}
 
 	&__container {
@@ -17,7 +22,7 @@
 	}
 
 	&__image {
-		@apply relative;
+		@apply relative hidden md:block;
 		&::after {
 			@apply absolute z-0;
 			content: '';
@@ -29,6 +34,8 @@
 			transform: translate(-50%, -50%);
 			border-radius: 50%;
 			z-index: -1;
+
+			@apply hidden md:block;
 		}
 	}
 
@@ -41,6 +48,18 @@
 
 		@media screen(md) {
 			font-size: calc(var(--scale) * 5rem);
+		}
+	}
+
+	&__subtitle {
+		@apply text-white text-[1.8rem] font-unbounded leading-9;
+
+		span {
+			@apply bg-[#fff12e] text-black px-2 font-medium;
+		}
+
+		@media screen(md) {
+			font-size: calc(var(--scale) * 2rem);
 		}
 	}
 

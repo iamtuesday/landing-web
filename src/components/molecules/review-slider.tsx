@@ -1,5 +1,6 @@
 'use client'
 
+import { IReview } from '@/app/(marketing)/[slug]/page'
 import { cn } from '@/lib/utils'
 import Image from 'next/image'
 import { useEffect, useRef } from 'react'
@@ -9,14 +10,15 @@ import 'swiper/element/css/effect-fade'
 import { Icons } from '../ui'
 
 interface ReviewListProps {
-	list: {
-		content: string
-		author: {
-			name: string
-			position: string
-			avatar?: string
-		}
-	}[]
+	// list: {
+	// 	content: string
+	// 	author: {
+	// 		name: string
+	// 		position: string
+	// 		avatar?: string
+	// 	}
+	// }[]
+	list: IReview[]
 }
 
 export const ReviewSlider: React.FC<ReviewListProps> = ({ list }) => {
@@ -108,30 +110,31 @@ export const ReviewSlider: React.FC<ReviewListProps> = ({ list }) => {
 				css-mode="true"
 				autoplay="true"
 			>
-				{list.map((review, index) => {
-					return (
-						<swiper-slide key={index}>
-							<div className={cn('review-slider__content')}>
-								<p className="review-slider__content--text">{review.content}</p>
-								<div className="review-slider__content--author">
-									<figure className="review-slider__content--author-image">
-										<Image
-											src="https://tuesdays3.sfo3.digitaloceanspaces.com/quote.png"
-											alt={review.author.name}
-											width={100}
-											height={100}
-										/>
-									</figure>
+				{Array.isArray(list) &&
+					list?.map((review, index) => {
+						return (
+							<swiper-slide key={index}>
+								<div className={cn('review-slider__content')}>
+									<p className="review-slider__content--text">{review.description}</p>
+									<div className="review-slider__content--author">
+										<figure className="review-slider__content--author-image">
+											<Image
+												src="https://tuesdays3.sfo3.digitaloceanspaces.com/quote.png"
+												alt={review.name}
+												width={100}
+												height={100}
+											/>
+										</figure>
 
-									<div className="review-slider__content--author-info">
-										<p className="review-slider__content--author-name">{review.author.name}</p>
-										<p className="review-slider__content--author-position">{review.author.position}</p>
+										<div className="review-slider__content--author-info">
+											<p className="review-slider__content--author-name">{review.name}</p>
+											<p className="review-slider__content--author-position">{review.job}</p>
+										</div>
 									</div>
 								</div>
-							</div>
-						</swiper-slide>
-					)
-				})}
+							</swiper-slide>
+						)
+					})}
 			</swiper-container>
 		</div>
 	)
