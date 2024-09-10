@@ -1,8 +1,10 @@
+'use client'
+
 import { IBannerMiddle } from '@/app/(marketing)/[slug]/page'
 import Image from 'next/image'
 import { FC } from 'react'
 import { Typography } from '../molecules'
-import { Button } from '../ui'
+import { Button, Mdx } from '../ui'
 
 interface BannerMiddleProps {
 	bannerMiddle: IBannerMiddle
@@ -11,20 +13,20 @@ interface BannerMiddleProps {
 export const BannerMiddle: FC<BannerMiddleProps> = ({ bannerMiddle }: BannerMiddleProps) => {
 	const { title, subtitle, description, img } = bannerMiddle
 
-	const subtitleFormat = subtitle.replace('/', '<span>')
+	const subtitleFormat = subtitle?.replace('/', '<span>')
 
 	return (
 		<section className="banner-middle">
 			<div className="banner-middle__container">
 				<div className="banner-middle__content">
 					<h3 className="banner-middle__title">{title}</h3>
-					{/* <p className="banner-middle__text">
-						Subscribe and get The special Offer <span>40% Discount</span>
-					</p> */}
-					<Typography as="md" size="xl" weight="semibold" className="banner-middle__subtitle">
+
+					<Typography as={Mdx} className="banner-middle__subtitle">
 						{subtitleFormat}
 					</Typography>
+
 					<p className="banner-middle__description">{description}</p>
+
 					<div className="banner-middle__btn">
 						<Button variant="outline">Subscribe Email</Button>
 					</div>

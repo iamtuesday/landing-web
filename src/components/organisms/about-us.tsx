@@ -9,7 +9,6 @@ interface AboutUsProps {
 }
 
 export const AboutUs: FC<AboutUsProps> = ({ aboutUs }) => {
-	console.log(aboutUs)
 	const { title, subtitle, description, img, list } = aboutUs
 	return (
 		<div className="about-us">

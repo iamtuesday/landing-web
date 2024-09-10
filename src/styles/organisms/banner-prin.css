@@ -7,6 +7,7 @@
 	}
 
 	&::before {
+		@apply overflow-hidden;
 		content: '';
 		position: absolute;
 		width: 169%;
@@ -68,6 +69,22 @@
 			span {
 				@apply font-bold;
 			}
+		}
+	}
+
+	&__figure {
+		@apply absolute top-0 left-0 z-0 hidden;
+
+		@media screen(md) {
+			@apply block;
+
+			height: auto;
+			top: calc(var(--scale) * 30rem);
+			width: calc(var(--scale) * 55rem);
+		}
+
+		img {
+			@apply w-full h-full object-cover;
 		}
 	}
 }

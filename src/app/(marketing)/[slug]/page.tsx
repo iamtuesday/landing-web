@@ -5,6 +5,7 @@ export type ILandingContract = {
 	banner: IBanner
 	aboutUs: IAboutUs
 	bannerMiddle: IBannerMiddle
+	review: IReviews
 }
 
 export type IBannerMiddle = {
@@ -41,6 +42,18 @@ export type IBanner = {
 	subtitle: string
 	formTitle: string
 	formDescription: string
+}
+
+export type IReviews = {
+	title: string
+	subtitle: string
+	list: IReview[]
+}
+
+export type IReview = {
+	name: string
+	job: string
+	description: string
 }
 
 interface SlugPageProps {
@@ -98,13 +111,15 @@ export default async function SlugPage({ params }: SlugPageProps) {
 			title: _data?.bannerMiddle?.title,
 			subtitle: _data?.bannerMiddle?.subtitle,
 			description: _data?.bannerMiddle?.description,
-			bg: {
-				url: _data?.bannerMiddle?.bg?.data?.attributes?.url,
-				alt: _data?.bannerMiddle?.bg?.data?.attributes?.alternativeText,
-				name: _data?.bannerMiddle?.bg?.data?.attributes?.name,
-				width: _data?.bannerMiddle?.bg?.data?.attributes?.width,
-				height: _data?.bannerMiddle?.bg?.data?.attributes?.height
-			},
+			bg: !!_data?.bannerMiddle?.bg?.data
+				? {
+						url: _data?.bannerMiddle?.bg?.data?.attributes?.url,
+						alt: _data?.bannerMiddle?.bg?.data?.attributes?.alternativeText,
+						name: _data?.bannerMiddle?.bg?.data?.attributes?.name,
+						width: _data?.bannerMiddle?.bg?.data?.attributes?.width,
+						height: _data?.bannerMiddle?.bg?.data?.attributes?.height
+				  }
+				: undefined,
 			img: {
 				url: _data?.bannerMiddle?.img?.data?.attributes?.url,
 				alt: _data?.bannerMiddle?.img?.data?.attributes?.alternativeText,
@@ -113,7 +128,7 @@ export default async function SlugPage({ params }: SlugPageProps) {
 				height: _data?.bannerMiddle?.img?.data?.attributes?.height
 			}
 		},
-		reviews: {
+		review: {
 			title: _data?.reviews?.title,
 			subtitle: _data?.reviews?.subtitle,
 			list: _data?.reviews?.list.map((item: IGenericRecord) => ({
@@ -129,7 +144,7 @@ export default async function SlugPage({ params }: SlugPageProps) {
 		return <div>Error: {error.message}</div>
 	}
 
-	const { banner, reviews, services, aboutUs, bannerMiddle } = newData
+	const { banner, review, services, aboutUs, bannerMiddle } = newData
 
 	return (
 		<main>
@@ -141,7 +156,7 @@ export default async function SlugPage({ params }: SlugPageProps) {
 
 			<BannerMiddle bannerMiddle={bannerMiddle} />
 
-			<Reviews titles={reviews} />
+			<Reviews review={review} />
 		</main>
 	)
 }

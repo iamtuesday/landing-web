@@ -1,4 +1,6 @@
+import { cn } from '@/lib/utils'
 import { isSet } from '@/lib/utils/common'
+import Image from 'next/image'
 import { FC } from 'react'
 import { FormPrin } from '../molecules'
 
@@ -52,6 +54,15 @@ export const BannerPrin: FC<BannerPrinProps> = ({ banner }) => {
 					</div>
 					<FormPrin />
 				</div>
+
+				<figure className={cn('banner-prin__figure')}>
+					<Image
+						src="https://tuesdays3.sfo3.digitaloceanspaces.com/portrait-handsome-construction-worker.png"
+						alt="banner-prin"
+						width={500}
+						height={500}
+					/>
+				</figure>
 			</div>
 		</section>
 	)
