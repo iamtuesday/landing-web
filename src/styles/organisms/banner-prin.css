@@ -1,6 +1,6 @@
 .banner-prin {
 	@apply relative overflow-hidden w-full;
-	height: 130rem;
+	height: 140rem;
 
 	@media screen(md) {
 		height: 100vh;
@@ -43,12 +43,10 @@
 
 	&__description {
 		@apply text-[#FFFFFF] text-[20px] leading-[30px] font-normal font-unbounded mt-4;
-
-		@media scre;
 	}
 
 	&__form {
-		@apply mb-[4rem] bg-white p-[5rem] rounded-[.5rem] relative flex flex-col gap-4;
+		@apply mb-[4rem] bg-white p-[5rem] rounded-[.5rem] relative flex flex-col gap-4 mt-[7.5rem] laptop:mt-0;
 		-webkit-box-shadow: -1px 0px 44px 15px rgb(0 0 0 / 7%);
 
 		&-content {
@@ -79,12 +77,12 @@
 			@apply block;
 
 			height: auto;
-			top: calc(var(--scale) * 30rem);
-			width: calc(var(--scale) * 55rem);
+			top: calc(var(--scale) * 28rem);
+			width: calc(var(--scale) * 45rem);
 		}
 
 		img {
-			@apply w-full h-full object-cover;
+			@apply relative w-full h-full object-cover;
 		}
 	}
 }

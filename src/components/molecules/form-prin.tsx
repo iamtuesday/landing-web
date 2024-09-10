@@ -10,10 +10,27 @@ import { useForm } from 'react-hook-form'
 import * as z from 'zod'
 
 const formSchema = z.object({
-	fullname: z.string(),
-	email: z.string().email(),
-	phone: z.string().min(10).max(10),
-	address: z.string(),
+	fullname: z.string().min(3, {
+		message: 'Please enter your full name'
+	}),
+	email: z
+		.string()
+		.min(3, {
+			message: 'Please enter a valid email address'
+		})
+		.email({
+			message: 'Please enter a valid email address'
+		}),
+
+	phone: z
+		.string()
+		.min(10, {
+			message: 'Please enter a valid phone number'
+		})
+		.max(10),
+	address: z.string().min(2, {
+		message: 'Please enter your address'
+	}),
 	issue: z.string().optional()
 })
 
@@ -36,8 +53,6 @@ export const FormPrin = () => {
 		formState: { errors },
 		reset
 	} = form
-
-	const isComplete = Object.values(form.getValues()).every(value => value !== '')
 
 	async function onSubmit(data: z.infer<typeof formSchema>) {
 		setIsLoading(true)
@@ -132,9 +147,7 @@ export const FormPrin = () => {
 					/>
 
 					<div>
-						<Button type="submit" disabled={!isComplete}>
-							Request a Call Back
-						</Button>
+						<Button type="submit">Request a Call Back</Button>
 					</div>
 				</form>
 			</Form>

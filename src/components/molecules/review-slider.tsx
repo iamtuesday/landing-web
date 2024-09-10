@@ -25,12 +25,10 @@ export const ReviewSlider: React.FC<ReviewListProps> = ({ list }) => {
 	const swiperRef = useRef(null) as any
 
 	useEffect(() => {
-		// Register Swiper web component
 		register()
 
-		// Object with parameters
 		const params = {
-			slidesPerView: 2,
+			slidesPerView: 1,
 			spaceBetween: 20,
 			breakpoints: {
 				375: {
@@ -69,9 +67,6 @@ export const ReviewSlider: React.FC<ReviewListProps> = ({ list }) => {
           }
         `
 			]
-
-			// array with CSS urls
-			/* injectStylesUrls: ['path/to/one.css', 'path/to/two.css'], */
 		}
 
 		// Assign it to swiper element
@@ -116,7 +111,7 @@ export const ReviewSlider: React.FC<ReviewListProps> = ({ list }) => {
 							<swiper-slide key={index}>
 								<div className={cn('review-slider__content')}>
 									<p className="review-slider__content--text">{review.description}</p>
-									<div className="review-slider__content--author">
+									<div className="review-slider__content--author space-y-2">
 										<figure className="review-slider__content--author-image">
 											<Image
 												src="https://tuesdays3.sfo3.digitaloceanspaces.com/quote.png"

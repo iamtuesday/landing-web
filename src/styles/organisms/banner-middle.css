@@ -1,6 +1,6 @@
 .banner-middle {
 	@apply relative overflow-hidden w-full;
-	height: 90rem;
+	height: 80rem;
 
 	@media screen(md) {
 		height: calc(var(--scale) * 70rem);
@@ -11,6 +11,7 @@
 		content: '';
 		width: 169%;
 		height: 123%;
+		/* height: 155vh; */
 		left: -32%;
 		top: -27%;
 		clip-path: ellipse(50% 50% at 50% 50%);

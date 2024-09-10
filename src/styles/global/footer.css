@@ -12,6 +12,6 @@
 	&::after {
 		@apply inset-0 absolute;
 		content: '';
-		background: linear-gradient(89.98deg, #f73859 0.39%, #6e5cff 99.99%);
+		background: linear-gradient(89.98deg, #f73859 0.39%, #dd3333 99.99%);
 	}
 }
