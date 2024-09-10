@@ -1,6 +1,6 @@
 'use client'
 
-import { IBannerMiddle } from '@/app/(marketing)/[slug]/page'
+import { IBannerMiddle } from '@/interfaces/landing.interface'
 import Image from 'next/image'
 import { FC } from 'react'
 import { Typography } from '../molecules'

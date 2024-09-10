@@ -1,6 +1,6 @@
 .banner-prin {
 	@apply relative overflow-hidden w-full;
-	height: 140rem;
+	height: 135rem;
 
 	@media screen(md) {
 		height: 100vh;

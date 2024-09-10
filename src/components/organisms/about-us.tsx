@@ -1,4 +1,4 @@
-import { IAboutUs } from '@/app/(marketing)/[slug]/page'
+import { IAboutUs } from '@/interfaces/landing.interface'
 import Image from 'next/image'
 import { FC } from 'react'
 import { Titles } from '../atoms'

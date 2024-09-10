@@ -1,6 +1,6 @@
 'use client'
 
-import { IReview } from '@/app/(marketing)/[slug]/page'
+import { IReview } from '@/interfaces/landing.interface'
 import { cn } from '@/lib/utils'
 import Image from 'next/image'
 import { useEffect, useRef } from 'react'
@@ -28,7 +28,7 @@ export const ReviewSlider: React.FC<ReviewListProps> = ({ list }) => {
 		register()
 
 		const params = {
-			slidesPerView: 1,
+			slidesPerView: 2,
 			spaceBetween: 20,
 			breakpoints: {
 				375: {

@@ -1,17 +1,18 @@
 import Image from 'next/image'
+import Link from 'next/link'
 
 export const Header = () => {
 	return (
 		<header className="header">
 			<div className="header__container">
-				<figure className="header__logo">
+				<Link className="header__logo cursor-pointer" href="https://incanelectric.com">
 					<Image
 						src="https://tuesdays3.sfo3.digitaloceanspaces.com/LOGO_INCAN_ROJO_1_1_e1671788654389_e1a17bac22_5ab5964982.webp"
 						alt="logo"
 						width={300}
 						height={100}
 					/>
-				</figure>
+				</Link>
 
 				<div className="header__content">
 					<span className="header__content--title">Call For An Instant Quote</span>

@@ -30,7 +30,7 @@ const fontHome = localFont({
 })
 
 export const metadata: Metadata = {
-	metadataBase: new URL('https://acme.com'),
+	metadataBase: new URL('https://lp.incanelectric.com'),
 	title: {
 		default: siteConfig.name,
 		template: `%s | ${siteConfig.name}`

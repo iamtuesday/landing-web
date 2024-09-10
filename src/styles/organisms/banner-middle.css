@@ -1,6 +1,6 @@
 .banner-middle {
 	@apply relative overflow-hidden w-full;
-	height: 80rem;
+	height: 45rem;
 
 	@media screen(md) {
 		height: calc(var(--scale) * 70rem);

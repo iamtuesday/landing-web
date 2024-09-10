@@ -1,5 +1,5 @@
 .about-us {
-	@apply container mx-auto py-5;
+	@apply container mx-auto py-[5rem];
 	@media screen(md) {
 		padding: calc(var(--scale) * 10rem) 0;
 	}

@@ -6,9 +6,5 @@ export const marketingConfig: MarketingConfig = {
 			title: 'Courses',
 			href: '/courses'
 		}
-		// {
-		// 	title: 'Find Jobs',
-		// 	href: '/jobseekers/jobsearch'
-		// }
 	]
 }

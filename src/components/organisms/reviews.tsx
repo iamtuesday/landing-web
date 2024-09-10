@@ -1,4 +1,4 @@
-import { IReviews } from '@/app/(marketing)/[slug]/page'
+import { IReviews } from '@/interfaces/landing.interface'
 import { FC } from 'react'
 import { Titles } from '../atoms'
 import { ReviewSlider } from '../molecules'

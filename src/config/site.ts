@@ -3,9 +3,9 @@ import { SiteConfig } from '@/types'
 export const siteConfig: SiteConfig = {
 	name: 'Landing Incan Electric',
 	description: 'THe best electric service in southeast Wisconsin',
-	url: 'http://localhost:3000',
-	keywords: ['Incan Electric', "The best electric service"],
-	creator: "Roy Cerdan",
+	url: 'https://lp.incanelectric.com',
+	keywords: ['Incan Electric', 'The best electric service'],
+	creator: 'Roy Cerdan',
 	authors: [
 		{
 			name: 'Roy Cerdan',
