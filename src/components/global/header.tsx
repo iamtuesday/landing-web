@@ -2,16 +2,14 @@ import Image from 'next/image'
 import Link from 'next/link'
 
 export const Header = () => {
+	const logo = process.env.NEXT_PUBLIC_LOGO || '/images/logo.png'
+	const phone = process.env.NEXT_PUBLIC_PHONE || '+ (262) 235 5444'
+
 	return (
 		<header className="header">
 			<div className="header__container">
-				<Link className="header__logo cursor-pointer" href="https://incanelectric.com">
-					<Image
-						src="https://tuesdays3.sfo3.digitaloceanspaces.com/LOGO_INCAN_ROJO_1_1_e1671788654389_e1a17bac22_5ab5964982.webp"
-						alt="logo"
-						width={300}
-						height={100}
-					/>
+				<Link className="header__logo cursor-pointer" href="/">
+					<Image src={logo} alt="logo" width={300} height={100} />
 				</Link>
 
 				<div className="header__content">
@@ -29,8 +27,8 @@ export const Header = () => {
 						</figure>
 
 						<div className="header__content--icon-text">
-							<a className="text-inherit" href="tel:+ (262) 235 5444" rel="noopener noreferrer">
-								+ (262) 235 5444
+							<a className="text-inherit" href={`tel:${phone.replace(/\s/g, '')}`} rel="noopener noreferrer">
+								{phone}
 							</a>
 						</div>
 					</div>

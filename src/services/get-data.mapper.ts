@@ -75,6 +75,22 @@ export const mapGetData = (data: IGenericRecord): ILanding => {
 				description: item.description
 			}))
 		},
+		faqs: _data?.faqs
+			? {
+					prompt: {
+						title: _data?.faqs.title,
+						subtitle: _data?.faqs.subtitle
+					},
+					list: Array.isArray(_data?.faqs?.list)
+						? _data.faqs.list.map((item: IGenericRecord) => ({
+								id: item.id,
+								question: item.question,
+								answer: item.answer
+						  }))
+						: [],
+					gallery: Array.isArray(_data?.faqs?.gallery) ? _data.faqs.gallery.map((item: IGenericRecord) => {}) : []
+			  }
+			: undefined,
 		seo: !!_data?.seo
 			? {
 					metaTitle: _data.seo.title,

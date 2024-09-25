@@ -2,7 +2,8 @@
 
 import { IBannerMiddle } from '@/interfaces/landing.interface'
 import Image from 'next/image'
-import { FC } from 'react'
+import { FC } from 'react';
+import { ThemeEnum } from "../../enums/theme.enum"
 import { Typography } from '../molecules'
 import { Button, Mdx } from '../ui'
 
@@ -15,7 +16,10 @@ export const BannerMiddle: FC<BannerMiddleProps> = ({ bannerMiddle }: BannerMidd
 
 	const subtitleFormat = subtitle?.replace('/', '<span>')
 
-	return (
+  let content = null;
+
+  if(ThemeEnum.isAgnostic()){
+    content = 
 		<section className="banner-middle">
 			<div className="banner-middle__container">
 				<div className="banner-middle__content">
@@ -37,5 +41,7 @@ export const BannerMiddle: FC<BannerMiddleProps> = ({ bannerMiddle }: BannerMidd
 				</figure>
 			</div>
 		</section>
-	)
+  }
+
+  return content
 }

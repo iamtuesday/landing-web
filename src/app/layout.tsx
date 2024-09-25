@@ -7,6 +7,7 @@ import '@/styles/globals.css'
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import localFont from 'next/font/local'
+import Head from 'next/head'
 import { Toaster } from 'sonner'
 
 const unbounded = localFont({
@@ -55,9 +56,9 @@ export const metadata: Metadata = {
 		creator: '@shadcn'
 	},
 	icons: {
-		icon: '/favicon.ico',
-		shortcut: '/favicon-16x16.png',
-		apple: '/apple-touch-icon.png'
+		icon: process.env.NEXT_PUBLIC_FAVICON || '/favicon.ico'
+		// shortcut: '/favicon-16x16.png',
+		// apple: '/apple-touch-icon.png'
 	},
 	manifest: `${siteConfig.url}/site.webmanifest`
 }
@@ -67,9 +68,16 @@ export default function RootLayout({
 }: Readonly<{
 	children: React.ReactNode
 }>) {
+	const theme = process.env.NEXT_PUBLIC_DEFAULT_THEME
 	return (
 		<html lang="en">
-			<head />
+			<Head>
+				<meta charSet="utf-8" />
+				<meta name="viewport" content="width=device-width, initial-scale=1" />
+				<meta name="theme-color" content="#000000" />
+				<link rel="manifest preload" href="/site.webmanifest" />
+			</Head>
+
 			<body
 				className={cn(
 					'min-h-screen bg-background font-sans antialiased',
@@ -80,7 +88,7 @@ export default function RootLayout({
 				)}
 			>
 				<Header />
-				{children}
+				<main data-theme={theme}>{children}</main>
 				<Analytics />
 
 				<Toaster />

@@ -1,7 +1,7 @@
 import type { Metadata, ResolvingMetadata } from 'next'
 
 import { Seo } from '@/components/global/seo'
-import { AboutUs, BannerMiddle, BannerPrin, Features, Reviews } from '@/components/organisms'
+import { AboutUs, BannerMiddle, BannerPrin, Faqs, Features, Reviews } from '@/components/organisms'
 import { getData } from '@/services/get-data.service'
 
 interface SlugPageProps {
@@ -31,13 +31,38 @@ export async function generateMetadata(
 	}
 }
 
+const faqs = {
+	prompt: {
+		subtitle: 'Explore faqs',
+		title: 'Popular questions about our company'
+	},
+	list: [
+		{
+			id: 1,
+			question: 'Why to choose us?',
+			answer:
+				"Whether you need lighting repoirs, electrician upgrades, or a new installation, we're here to provide quality services that meet your needs and exceed your expectations."
+		},
+		{
+			id: 2,
+			question: 'How quickly can you get help?',
+			answer: ''
+		},
+		{
+			id: 3,
+			question: 'How to par for services?',
+			answer: ''
+		}
+	]
+}
+
 export default async function SlugPage({ params }: SlugPageProps) {
 	const response = await getData(params.slug)
 
-	const { banner, review, services, aboutUs, bannerMiddle } = response
+	const { banner, review, services, aboutUs, bannerMiddle, faqs } = response
 
 	return (
-		<main>
+		<>
 			<BannerPrin banner={banner} />
 
 			<AboutUs aboutUs={aboutUs} />
@@ -46,9 +71,11 @@ export default async function SlugPage({ params }: SlugPageProps) {
 
 			<BannerMiddle bannerMiddle={bannerMiddle} />
 
+			<Faqs prompt={faqs?.prompt!} list={faqs?.list!} gallery={faqs?.gallery!} />
+
 			<Reviews review={review} />
 
 			<Seo seo={response.seo!} />
-		</main>
+		</>
 	)
 }

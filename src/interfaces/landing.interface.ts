@@ -6,7 +6,28 @@ export type ILanding = {
 	services: IServices
 	bannerMiddle: IBannerMiddle
 	review: IReviews
+	faqs?: IFaqs
 	seo?: ISeo | null
+}
+
+export interface IFaqs {
+	prompt: {
+		title: string
+		subtitle: string
+	}
+	list: {
+		id: number
+		question: string
+		answer: string
+	}[]
+	gallery: {
+		id: number
+		url: string
+		alt: string
+		name: string
+		width: number
+		height: number
+	}[]
 }
 
 export type ISeo = {

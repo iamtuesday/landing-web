@@ -25,7 +25,7 @@ interface TitlesProps extends VariantProps<typeof TitlesVariants> {
 const Titles = React.forwardRef<HTMLDivElement, TitlesProps>(
 	({ subtitle, title, className, position, ...props }, ref) => {
 		return (
-			<div className={cn('flex flex-col gap-6 max-w-[800px] mx-auto', className)} ref={ref} {...props}>
+			<div className={cn('flex flex-col gap-12 max-w-[800px] mx-auto', className)} ref={ref} {...props}>
 				{!!subtitle && (
 					<Typography
 						as="md"

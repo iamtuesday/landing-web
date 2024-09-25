@@ -1,5 +1,6 @@
 export * from './about-us'
 export * from './banner-middle'
 export * from './banner-prin'
+export * from './faqs'
 export * from './features'
 export * from './reviews'
