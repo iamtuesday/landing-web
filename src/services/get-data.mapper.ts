@@ -3,6 +3,8 @@ import { ILanding } from '@/interfaces/landing.interface'
 export const mapGetData = (data: IGenericRecord): ILanding => {
 	const _data = data?.data[0]?.attributes
 
+ console.log("_data -->", _data?.faqs?.gallery?.data)
+
 	const newData: ILanding = {
 		title: _data?.title,
 		slug: _data?.slug,
@@ -78,17 +80,26 @@ export const mapGetData = (data: IGenericRecord): ILanding => {
 		faqs: _data?.faqs
 			? {
 					prompt: {
-						title: _data?.faqs.title,
-						subtitle: _data?.faqs.subtitle
+						title: _data?.faqs.information.title,
+						subtitle: _data?.faqs.information.subtitle
 					},
-					list: Array.isArray(_data?.faqs?.list)
-						? _data.faqs.list.map((item: IGenericRecord) => ({
+					list: Array.isArray(_data?.faqs?.card)
+						? _data.faqs.card.map((item: IGenericRecord) => ({
 								id: item.id,
 								question: item.question,
 								answer: item.answer
 						  }))
 						: [],
-					gallery: Array.isArray(_data?.faqs?.gallery) ? _data.faqs.gallery.map((item: IGenericRecord) => {}) : []
+					gallery: Array.isArray(_data?.faqs?.gallery?.data) 
+            ? _data.faqs.gallery.data.map((item: IGenericRecord) => ({
+                id: item.id,
+                url: item.attributes.url,
+                name: item.attributes.name,
+                alt: item.attributes.alternativeText,
+                width: item.attributes.width,
+                height: item.attributes.height
+              }))
+            : []
 			  }
 			: undefined,
 		seo: !!_data?.seo

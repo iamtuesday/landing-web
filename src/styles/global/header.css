@@ -8,11 +8,11 @@
 	}
 
 	&__logo {
-		@apply w-full max-w-[16rem] h-full max-h-[15rem];
+		@apply w-full max-w-[16rem] h-auto;
 
 		@media screen(md) {
-			max-width: calc(30rem * var(--scale));
-			max-height: calc(30rem * var(--scale));
+			max-width: calc(25rem * var(--scale));
+			/*max-height: calc(30rem * var(--scale));*/
 		}
 	}
 

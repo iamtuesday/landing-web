@@ -44,7 +44,7 @@ export const AboutUs: FC<AboutUsProps> = ({ aboutUs }) => {
 		)
 	} else if (ThemeEnum.isOther()) {
 		content = (
-			<div className="about-us-v2 container">
+			<div className="about-us-v2">
 				<div className="about-us-v2__form">
 					<div className="bg-primary p-8">
 						<Typography as="h2" size="5xl" weight="semibold" className="text-center text-white">

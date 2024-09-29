@@ -14,7 +14,7 @@
 
 .features-v2 {
  padding: 5rem 2.5rem;
- background: #f8fafc;
+ /*background: #f8fafc;*/
 
  @media screen(laptop){
    padding: calc(10rem * var(--scale)) calc(15rem * var(--scale));
@@ -29,7 +29,9 @@
 
   @media screen(laptop){
     flex-direction: row;
-    margin-top: calc(var(--scale) * 5rem);
+    justify-content: center;
+    gap: calc(var(--scale) * 4rem);
+    margin-top: calc(var(--scale) * 10rem);
   } 
 }
 

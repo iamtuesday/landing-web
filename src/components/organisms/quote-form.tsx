@@ -5,20 +5,22 @@ import * as z from 'zod'
 import { Button, Form, FormControl, FormField, FormItem, FormMessage, Input } from '../ui'
 
 const quoteFormSchema = z.object({
-	name: z.optional(z.string().min(3)),
+  fullName: z.optional(z.string().min(3)),
 	email: z.string().email(),
 	phone: z.string().min(10),
-	message: z.string().min(5)
+  address: z.optional(z.string().min(3)),
+	issue: z.string().min(5)
 })
 
 export const QuoteForm = () => {
 	const form = useForm<z.infer<typeof quoteFormSchema>>({
 		resolver: zodResolver(quoteFormSchema),
 		defaultValues: {
-			name: '',
+			fullName: '',
 			email: '',
 			phone: '',
-			message: ''
+      address: "",
+			issue: ""
 		},
 		mode: 'onChange'
 	})
@@ -34,10 +36,10 @@ export const QuoteForm = () => {
 
 	return (
 		<Form {...form}>
-			<form onSubmit={handleSubmit(onSubmit)} className="grid grid-cols-1 gap-4 py-12 px-8 bg-slate-50">
+			<form onSubmit={handleSubmit(onSubmit)} className="grid grid-cols-1 gap-4 py-12 px-8 bg-white">
 				<FormField
 					control={form.control}
-					name="name"
+					name="fullName"
 					render={({ field }) => (
 						<FormItem>
 							<FormControl>
@@ -76,7 +78,7 @@ export const QuoteForm = () => {
 
 				<FormField
 					control={form.control}
-					name="message"
+					name="issue"
 					render={({ field }) => (
 						<FormItem>
 							<FormControl>

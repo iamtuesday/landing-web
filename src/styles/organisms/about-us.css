@@ -44,6 +44,8 @@
 }
 
 .about-us-v2 {
+  background: #f8fafc;
+  padding: 0 2.5rem;
 	position: relative;
   display: flex;
   flex-direction: column;
@@ -51,6 +53,7 @@
   z-index: 10;
 
   @media screen(laptop){
+    padding: 0 calc(var(--scale) * 20rem);
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 0;

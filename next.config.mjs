@@ -8,8 +8,9 @@ const nextConfig = {
 				hostname: 'tuesdays3.sfo3.digitaloceanspaces.com',
 				port: '',
 				pathname: '/*'
-			}
-		]
+      }
+		],
+    domains: ['sfo3.digitaloceanspaces.com']
 	},
 	redirects: async () => {
 		return [

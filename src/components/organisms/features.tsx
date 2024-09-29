@@ -54,7 +54,7 @@ export const Features: React.FC<FeaturesProps> = ({ title, subtitle, className, 
                     </span>
                   </figure>
 
-									<Typography as="h3" size="4xl" weight="semibold" className="text-center">
+									<Typography as="h3" size="5xl" weight="semibold" className="text-center">
 										{item.title}
 									</Typography>
 

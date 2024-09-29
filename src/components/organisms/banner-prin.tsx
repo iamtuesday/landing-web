@@ -17,9 +17,7 @@ interface BannerPrinProps {
 }
 
 export const BannerPrin: FC<BannerPrinProps> = ({ banner }) => {
-	/**
-	 * TODO: Debe ser una variable global
-	 */
+	
 	const phone = process.env.NEXT_PUBLIC_PHONE || '+ (262) 235 5444'
 
 	const formatTitle = (title: string) => {
@@ -93,16 +91,12 @@ export const BannerPrin: FC<BannerPrinProps> = ({ banner }) => {
 				<header className="banner-prin-v2__header">
 					<div className="banner-prin-v2__header-container">
 						<span
-							className="
-						banner-prin-v2__header-call
-						"
+							className="banner-prin-v2__header-call"
 						>
 							Call now {'— '}
 						</span>
 						<Link
-							href={`
-						tel:${phone}
-						`}
+							href={`tel:${phone}`}
 							className="banner-prin-v2__header-phone"
 						>
 							{phone}
