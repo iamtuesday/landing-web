@@ -18,7 +18,7 @@ const buttonVariants = cva(
 				rounded: 'bg-primary text-primary-foreground shadow hover:bg-primary/90 rounded-full'
 			},
 			size: {
-				default: 'h-[4.5rem] px-4 py-2',
+				default: 'h-[4.5rem] px-8 py-2',
 				sm: 'rounded-full py-2 px-3 text-[1.4rem]',
 				lg: 'px-4 py-1.5 rounded-lg text-base',
 				icon: 'h-9 w-9'

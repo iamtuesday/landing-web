@@ -14,10 +14,8 @@ interface AboutUsProps {
 export const AboutUs: FC<AboutUsProps> = ({ aboutUs }) => {
 	const { title, subtitle, description, img, list } = aboutUs
 
-	let content = null
-
 	if (ThemeEnum.isAgnostic()) {
-		content = (
+		return (
 			<div className="about-us">
 				<Titles title={title} subtitle={subtitle} position="center" />
 
@@ -43,7 +41,7 @@ export const AboutUs: FC<AboutUsProps> = ({ aboutUs }) => {
 			</div>
 		)
 	} else if (ThemeEnum.isOther()) {
-		content = (
+		return (
 			<div className="about-us-v2">
 				<div className="about-us-v2__form">
 					<div className="bg-primary p-8">
@@ -75,5 +73,5 @@ export const AboutUs: FC<AboutUsProps> = ({ aboutUs }) => {
 		)
 	}
 
-	return content
+	return null
 }

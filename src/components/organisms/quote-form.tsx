@@ -1,26 +1,29 @@
 'use client'
+
 import { zodResolver } from '@hookform/resolvers/zod'
+import { useRouter } from 'next/navigation'
 import { useForm } from 'react-hook-form'
 import * as z from 'zod'
 import { Button, Form, FormControl, FormField, FormItem, FormMessage, Input } from '../ui'
 
-const quoteFormSchema = z.object({
-  fullName: z.optional(z.string().min(3)),
+export const quoteFormSchema = z.object({
+	fullName: z.optional(z.string().min(3)),
 	email: z.string().email(),
 	phone: z.string().min(10),
-  address: z.optional(z.string().min(3)),
+	address: z.optional(z.string().min(3)),
 	issue: z.string().min(5)
 })
 
 export const QuoteForm = () => {
+	const router = useRouter()
 	const form = useForm<z.infer<typeof quoteFormSchema>>({
 		resolver: zodResolver(quoteFormSchema),
 		defaultValues: {
 			fullName: '',
 			email: '',
 			phone: '',
-      address: "",
-			issue: ""
+			address: '',
+			issue: ''
 		},
 		mode: 'onChange'
 	})
@@ -32,6 +35,9 @@ export const QuoteForm = () => {
 
 	const onSubmit = (data: z.infer<typeof quoteFormSchema>) => {
 		console.log(data)
+
+		//TODO: If success, redirect to thank you page
+		router.push('/thank-you')
 	}
 
 	return (

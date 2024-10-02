@@ -57,7 +57,6 @@ const faqs = {
 }
 
 export default async function SlugPage({ params }: SlugPageProps) {
-
 	const response = await getData(params.slug)
 
 	const { banner, review, services, aboutUs, bannerMiddle, faqs } = response
