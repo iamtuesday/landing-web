@@ -17,9 +17,13 @@ export const getData = async (slug: string): Promise<ILanding> => {
 }
 
 export const getQuote = async (data: z.infer<typeof quoteFormSchema>): Promise<void> => {
-	const [response, error] = await simpleFetch<IGenericRecord>('/quotes', {
+	const [response, error] = await simpleFetch<IGenericRecord>('/landing-forms', {
 		method: 'POST',
-		body: JSON.stringify(data)
+		body: JSON.stringify({
+			data: {
+				...data
+			}
+		})
 	})
 
 	if (!!error) {

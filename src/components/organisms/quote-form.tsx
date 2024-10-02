@@ -1,5 +1,6 @@
 'use client'
 
+import { getQuote } from '@/services/get-data.service'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useRouter } from 'next/navigation'
 import { useForm } from 'react-hook-form'
@@ -22,7 +23,7 @@ export const QuoteForm = () => {
 			fullName: '',
 			email: '',
 			phone: '',
-			address: '',
+			address: undefined,
 			issue: ''
 		},
 		mode: 'onChange'
@@ -33,8 +34,12 @@ export const QuoteForm = () => {
 		formState: { errors }
 	} = form
 
-	const onSubmit = (data: z.infer<typeof quoteFormSchema>) => {
-		console.log(data)
+	console.log('errors -->', errors)
+
+	const onSubmit = async (data: z.infer<typeof quoteFormSchema>) => {
+		console.log('data -->', data)
+
+		await getQuote(data)
 
 		//TODO: If success, redirect to thank you page
 		router.push('/thank-you')
