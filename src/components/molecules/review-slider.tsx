@@ -10,14 +10,6 @@ import 'swiper/element/css/effect-fade'
 import { Icons } from '../ui'
 
 interface ReviewListProps {
-	// list: {
-	// 	content: string
-	// 	author: {
-	// 		name: string
-	// 		position: string
-	// 		avatar?: string
-	// 	}
-	// }[]
 	list: IReview[]
 }
 
@@ -30,6 +22,7 @@ export const ReviewSlider: React.FC<ReviewListProps> = ({ list }) => {
 		const params = {
 			slidesPerView: 2,
 			spaceBetween: 20,
+			loop: list.length > 2,
 			breakpoints: {
 				375: {
 					slidesPerView: 1

@@ -17,7 +17,6 @@ interface BannerPrinProps {
 }
 
 export const BannerPrin: FC<BannerPrinProps> = ({ banner }) => {
-	
 	const phone = process.env.NEXT_PUBLIC_PHONE || '+ (262) 235 5444'
 
 	const formatTitle = (title: string) => {
@@ -36,10 +35,8 @@ export const BannerPrin: FC<BannerPrinProps> = ({ banner }) => {
 		return ''
 	}
 
-	let content = undefined
-
 	if (ThemeEnum.isAgnostic()) {
-		content = (
+		return (
 			<section className="banner-prin">
 				<div className="banner-prin__container">
 					<div className="banner-prin__content">
@@ -76,7 +73,7 @@ export const BannerPrin: FC<BannerPrinProps> = ({ banner }) => {
 			</section>
 		)
 	} else if (ThemeEnum.isOther()) {
-		content = (
+		return (
 			<section
 				className="banner-prin-v2"
 				style={
@@ -85,20 +82,13 @@ export const BannerPrin: FC<BannerPrinProps> = ({ banner }) => {
 					} as CSSProperties
 				}
 			>
-				<div className="banner-prin-v2__overlay"></div>
-				<div className="banner-prin-v2__content"></div>
+				<div className="banner-prin-v2__overlay" />
+				<div className="banner-prin-v2__content" />
 
 				<header className="banner-prin-v2__header">
 					<div className="banner-prin-v2__header-container">
-						<span
-							className="banner-prin-v2__header-call"
-						>
-							Call now {'— '}
-						</span>
-						<Link
-							href={`tel:${phone}`}
-							className="banner-prin-v2__header-phone"
-						>
+						<span className="banner-prin-v2__header-call">Call now {'— '}</span>
+						<Link href={`tel:${phone}`} className="banner-prin-v2__header-phone">
 							{phone}
 						</Link>
 					</div>
@@ -108,5 +98,5 @@ export const BannerPrin: FC<BannerPrinProps> = ({ banner }) => {
 		)
 	}
 
-	return content
+	return undefined
 }

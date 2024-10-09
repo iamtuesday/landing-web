@@ -8,16 +8,16 @@ const nextConfig = {
 				hostname: 'tuesdays3.sfo3.digitaloceanspaces.com',
 				port: '',
 				pathname: '/*'
-      }
+			}
 		],
-    domains: ['sfo3.digitaloceanspaces.com']
+		domains: ['sfo3.digitaloceanspaces.com']
 	},
 	redirects: async () => {
 		return [
 			{
 				source: '/',
 				destination: '/electrical-panel-upgrades',
-				permanent: true
+				permanent: false
 			}
 		]
 	}

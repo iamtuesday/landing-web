@@ -27,8 +27,6 @@ interface Faqs {
 export const Faqs = ({ prompt, list, gallery }: Faqs) => {
 	let content = null
 
-  console.log("gallery -->", gallery)
-
 	if (ThemeEnum.isOther()) {
 		content = (
 			<section className="bg-[#f8fafc] px-[2.5rem] laptop:px-[calc(var(--scale)_*_20rem)] grid grid-cols-1 gap-[2.5rem] laptop:grid-cols-2 laptop:gap-[5rem] py-[5rem] laptop:py-[10rem]">
@@ -59,16 +57,16 @@ export const Faqs = ({ prompt, list, gallery }: Faqs) => {
 							/>
 						)}
 					</figure>
-          <div className="flex flex-col gap-4">
-				  	{Array.isArray(gallery) &&
-						  gallery.slice(0, 2).map((item, index) => {
-							  return (
-								  <figure key={index} className="">
-									  <Image src={item?.url!} alt={item.name ?? item.alt} width={item.width} height={item.height} />
-								  </figure>
-							  )
-						  })}
-          </div>
+					<div className="flex flex-col gap-4">
+						{Array.isArray(gallery) &&
+							gallery.slice(0, 2).map((item, index) => {
+								return (
+									<figure key={index} className="">
+										<Image src={item?.url!} alt={item.name ?? item.alt} width={item.width} height={item.height} />
+									</figure>
+								)
+							})}
+					</div>
 				</div>
 			</section>
 		)

@@ -20,40 +20,12 @@ export async function generateMetadata(
 	// fetch data
 	const response = await getData(slug)
 
-	// optionally access and extend (rather than replace) parent metadata
-	// const previousImages = (await parent).openGraph?.images || []
-
 	return {
 		title: response.title
 		// openGraph: {
 		// 	images: ['/some-specific-page-image.jpg', ...previousImages]
 		// }
 	}
-}
-
-const faqs = {
-	prompt: {
-		subtitle: 'Explore faqs',
-		title: 'Popular questions about our company'
-	},
-	list: [
-		{
-			id: 1,
-			question: 'Why to choose us?',
-			answer:
-				"Whether you need lighting repoirs, electrician upgrades, or a new installation, we're here to provide quality services that meet your needs and exceed your expectations."
-		},
-		{
-			id: 2,
-			question: 'How quickly can you get help?',
-			answer: ''
-		},
-		{
-			id: 3,
-			question: 'How to par for services?',
-			answer: ''
-		}
-	]
 }
 
 export default async function SlugPage({ params }: SlugPageProps) {

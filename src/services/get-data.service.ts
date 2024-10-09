@@ -11,18 +11,23 @@ export const getData = async (slug: string): Promise<ILanding> => {
 		console.warn('Error fetching data', error)
 	}
 
-	const response = mapGetData(data!)
-
-	return response
+	return mapGetData(data!)
 }
 
-export const getQuote = async (data: z.infer<typeof quoteFormSchema>): Promise<void> => {
+export const createForm = async (_data: z.infer<typeof quoteFormSchema>): Promise<void> => {
+	const data = {
+		..._data
+	}
+
+	console.log('data', data)
+
 	const [response, error] = await simpleFetch<IGenericRecord>('/landing-forms', {
+		headers: {
+			'Content-Type': 'application/json'
+		},
 		method: 'POST',
 		body: JSON.stringify({
-			data: {
-				...data
-			}
+			data
 		})
 	})
 

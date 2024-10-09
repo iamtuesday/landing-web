@@ -1,14 +1,14 @@
 'use client'
 
-import { getQuote } from '@/services/get-data.service'
+import { createForm } from '@/services/get-data.service'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useRouter } from 'next/navigation'
 import { useForm } from 'react-hook-form'
 import * as z from 'zod'
-import { Button, Form, FormControl, FormField, FormItem, FormMessage, Input } from '../ui'
+import { Button, Form, FormControl, FormField, FormItem, FormMessage, Input, Textarea } from '../ui'
 
 export const quoteFormSchema = z.object({
-	fullName: z.optional(z.string().min(3)),
+	fullname: z.optional(z.string().min(3)),
 	email: z.string().email(),
 	phone: z.string().min(10),
 	address: z.optional(z.string().min(3)),
@@ -20,7 +20,7 @@ export const QuoteForm = () => {
 	const form = useForm<z.infer<typeof quoteFormSchema>>({
 		resolver: zodResolver(quoteFormSchema),
 		defaultValues: {
-			fullName: '',
+			fullname: '',
 			email: '',
 			phone: '',
 			address: undefined,
@@ -34,14 +34,15 @@ export const QuoteForm = () => {
 		formState: { errors }
 	} = form
 
-	console.log('errors -->', errors)
-
 	const onSubmit = async (data: z.infer<typeof quoteFormSchema>) => {
-		console.log('data -->', data)
+		const response = await createForm({
+			...data
+		})
 
-		await getQuote(data)
+		if (response?.[1]) {
+			console.warn('Error fetching data', response?.[1])
+		}
 
-		//TODO: If success, redirect to thank you page
 		router.push('/thank-you')
 	}
 
@@ -50,7 +51,7 @@ export const QuoteForm = () => {
 			<form onSubmit={handleSubmit(onSubmit)} className="grid grid-cols-1 gap-4 py-12 px-8 bg-white">
 				<FormField
 					control={form.control}
-					name="fullName"
+					name="fullname"
 					render={({ field }) => (
 						<FormItem>
 							<FormControl>
@@ -93,7 +94,7 @@ export const QuoteForm = () => {
 					render={({ field }) => (
 						<FormItem>
 							<FormControl>
-								<Input type="text" {...field} placeholder="Message" />
+								<Textarea {...field} placeholder="Issue" />
 							</FormControl>
 							<FormMessage />
 						</FormItem>
